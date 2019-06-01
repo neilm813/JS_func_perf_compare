@@ -1,7 +1,7 @@
 const funcs = [];
 
 const iterations = 10000;
-const params = []; // params to pass to both functions
+const args = []; // args to pass to both functions
 
 // paste functions here
 funcs[0] = Function;
@@ -13,7 +13,7 @@ function setRuntime(cb) {
 	const start = window.performance.now();
 
 	for (let i = 0; i < iterations; i++)
-		cb(...params);
+		cb(...args);
 
 	const end = window.performance.now();
 	cb.runtime = Math.round(end - start);
