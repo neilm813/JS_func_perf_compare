@@ -1,6 +1,7 @@
-const iterations = 10000;
-const params = [];
 const funcs = [];
+
+const iterations = 10000;
+const params = []; // params to pass to both functions
 
 // paste functions here
 funcs[0] = Function;

@@ -1,6 +1,7 @@
-const iterations = 10000;
-const params = [];
 const funcs = [];
+
+const iterations = 10000;
+const args = []; // args to pass to both functions
 
 // paste functions here
 funcs[0] = Function;
@@ -9,13 +10,13 @@ funcs[1] = Function;
 
 function setRuntime(cb) {
 
-  const start = window.performance.now();
+	const start = window.performance.now();
 
-  for (let i = 0; i < iterations; i++)
-    cb(...params);
+	for (let i = 0; i < iterations; i++)
+		cb(...args);
 
-  const end = window.performance.now();
-  cb.runtime = Math.round(end - start);
+	const end = window.performance.now();
+	cb.runtime = Math.round(end - start);
 }
 
 setRuntime(funcs[0]);
@@ -26,7 +27,7 @@ const slowerFuncIdx = 1 - fasterFuncIdx;
 const runtimePctDiff = Math.round(100 - (funcs[fasterFuncIdx].runtime / funcs[slowerFuncIdx].runtime) * 100);
 
 console.table({
-  [funcs[fasterFuncIdx].name]: `${funcs[fasterFuncIdx].runtime} ms`,
-  [funcs[slowerFuncIdx].name]: `${funcs[slowerFuncIdx].runtime} ms`,
-  [funcs[fasterFuncIdx].name + " is faster than " + funcs[slowerFuncIdx].name + " by"]: `${runtimePctDiff}%`
+	[funcs[fasterFuncIdx].name]: `${funcs[fasterFuncIdx].runtime} ms`,
+	[funcs[slowerFuncIdx].name]: `${funcs[slowerFuncIdx].runtime} ms`,
+	[funcs[fasterFuncIdx].name + " is faster than " + funcs[slowerFuncIdx].name + " by"]: `${runtimePctDiff}%`
 });
