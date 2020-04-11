@@ -1,10 +1,13 @@
 const funcs = [];
 
-// small differences may become larger with more iterations
+// small differences may become larger with more iterations, this can somewhat offset
+// not having large data for args. Too many iterations can crash browser.
 const iterations = 1000;
-const args = []; // args to pass to both functions
 
-// paste functions here
+// args to pass to both functions, if possible, generate large data with a loop
+const args = [];
+
+// paste functions here then open index.html, open console
 funcs[0] = Function;
 
 funcs[1] = Function;
