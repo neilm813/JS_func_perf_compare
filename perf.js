@@ -13,13 +13,13 @@ funcs[0] = Function;
 funcs[1] = Function;
 
 function setRuntime(cb) {
-  const start = window.performance.now();
+  const start = new Date().getTime();
 
   for (let i = 0; i < iterations; i++) {
     cb(...args);
   }
 
-  const end = window.performance.now();
+  const end = new Date().getTime();
   cb.runtime = Math.round(end - start);
 }
 
